@@ -89,9 +89,10 @@ input_df_encoded = input_df_encoded[expected_columns]
 input_scaled = scaler.transform(input_df_encoded)
 
 # Make a prediction
-prediction = model.predict(input_scaled)
-prediction_proba = model.predict_proba(input_scaled)
-
+#prediction = model.predict(input_scaled)
+#prediction_proba = model.predict_proba(input_scaled)
+prediction = model.predict(input_df_encoded)
+prediction_proba = model.predict_proba(input_df_encoded)
 st.header("Prediction Result")
 
 if st.button('Predict'):
@@ -99,3 +100,4 @@ if st.button('Predict'):
     st.write("Prediction Probabilities:")
     proba_df = pd.DataFrame(prediction_proba, columns=model.classes_)
     st.write(proba_df)
+
